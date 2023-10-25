@@ -113,7 +113,7 @@ class LM:
 
         loss_list = []
         with torch.no_grad():
-            for s, e in tqdm(batch_id):
+            for s, e in batch_id:
 
                 # run model inference
                 if self.max_length is not None:
