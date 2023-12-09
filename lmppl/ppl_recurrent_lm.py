@@ -140,7 +140,7 @@ class LM:
                 valid_length = (shift_label != PAD_TOKEN_LABEL_ID).sum(dim=-1)
                 loss = self.loss_fct(shift_logits.view(-1, shift_logits.size(-1)).cuda(), shift_label.view(-1).cuda())
                 loss = loss.view(len(output['logits']), -1)
-                loss = torch.sum(loss, -1) / valid_length
+                loss = torch.sum(loss, -1) / valid_length.cuda()
                 loss_list += loss.cpu().tolist()
 
                 if FORCE_RESET:
